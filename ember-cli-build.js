@@ -24,8 +24,15 @@ module.exports = function (defaults) {
         plugins: [
           { module: require('postcss-import') },
           require('tailwindcss'),
+          require('@tailwindcss/typography'),
+          require('@tailwindcss/aspect-ratio'),
         ],
       },
+    },
+
+    'ember-bootstrap': {
+      bootstrapVersion: 5,
+      importBootstrapCSS: true,
     },
   });
 

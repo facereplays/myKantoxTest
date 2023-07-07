@@ -43,7 +43,7 @@
     "ember-cli-dependency-checker": "^3.3.1",
     "ember-cli-htmlbars": "^6.2.0",
     "ember-cli-inject-live-reload": "^2.1.0",
-    "ember-cli-sri": "^2.1.1",
+   "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
     "ember-data": "~5.0.0",
     "ember-fetch": "^8.1.2",
@@ -86,6 +86,7 @@
     "@embroider/core": "^3.1.2",
     "@embroider/webpack": "^3.1.2",
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/typography": "^0.5.9"
+    "@tailwindcss/typography": "^0.5.9",
+    "miragejs": "^0.1.47"
   }
 }
