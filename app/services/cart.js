@@ -4,23 +4,23 @@ import { tracked } from '@glimmer/tracking';
 
 export default class CartService extends Service {
 
-  @tracked items = 0;
-  @tracked itemsGroups = A([]);
+  @tracked itemsGroups = localStorage.getItem('cart').length > 1 ? JSON.parse(localStorage.getItem('cart')) : A([]);
+
+  @tracked items = this.itemsGroups.filter(o=>o.amount>0).length;
   @tracked summ = 0;
   @service store;
   getAmount() {
     return this.items;
   }
   getGroups() {
+
     return this.itemsGroups;
   }
   add(item, amount) {
-
-    const found = this.itemsGroups.find(s => s.id == item.id);
+    const found = this.itemsGroups.find((s) => s.id == item.id);
     !found && amount > 0
       ? this.itemsGroups.push({ id: item.id, item: item, amount })
       : (found.amount = amount);
-
 
     this.summ = this.recalculate(this.itemsGroups);
     localStorage.setItem('cart', JSON.stringify(this.itemsGroups));

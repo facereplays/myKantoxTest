@@ -2,9 +2,7 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
-
 export default class CartComponent extends Component {
-
   @service cart;
   @service currency;
   @tracked price;
