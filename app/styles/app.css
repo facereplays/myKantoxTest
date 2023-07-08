@@ -11,3 +11,7 @@
   background-repeat: no-repeat;
   height: 32px;
 }
+
+.da:hover svg {
+  stroke: white !important;
+}
