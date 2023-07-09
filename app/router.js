@@ -10,6 +10,5 @@ Router.map(function () {
   this.route('products');
 
   this.route('product', { path: '/productss/:product_id' });
-  this.route('cart-view');
   this.route('cart');
 });

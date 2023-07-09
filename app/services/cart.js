@@ -9,7 +9,7 @@ export default class CartService extends Service {
       : A([]);
 
 
-  @tracked items = this.itemsGroups.filter((o) => o.amount > 0).length;
+  @tracked items =this.itemsGroups ?  this.itemsGroups.filter((o) => o.amount > 0).length : 0;
   @tracked summ = this.recalculate(this.itemsGroups);
   @tracked summTotal = 0;
   @service store;

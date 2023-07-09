@@ -6,7 +6,7 @@ export default class ProductGroupComponent extends Component {
   @tracked stat;
   @service currency;
   @service cart;
-  @tracked item = this.args.group.item;
+  @tracked item = this.args.group ? this.args.group.item : null;
   @tracked group = this.args.group;
 
   get discountText() {
