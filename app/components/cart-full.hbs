@@ -13,9 +13,10 @@ You have {{this.total}} items in your cart.
 <div class="col-span-4 ml-6 rounded-md overflow-hidden shadow-sm border border-gray-100 flex flex-col">
   <div class="bg-gray-100 font-bold px-8 py-4 text-xl">Summary</div>
   <div class=" px-8 py-4 flex flex-col">
-    <div> Subtotal</div>
-    <div> Shipping cost</div>
-    <div> Discount</div>
+    <div class="flex justify-between py-2"> Subtotal <span class="font-bold">{{this.currency.symbol}}{{this.subTotal}}</span></div>
+
+    <div class="flex justify-between py-2"> Shipping cost <span class="font-bold">{{this.currency.symbol}}{{this.shipping}}</span></div>
+    <div class="flex justify-between py-2">  Discount <span class="font-bold">{{this.currency.symbol}}{{this.discount}}</span></div>
 
   </div>
 </div>

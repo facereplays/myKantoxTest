@@ -29,9 +29,10 @@ export default class CartButtonComponent extends Component {
   @action
   addToCart(e) {
     e.preventDefault()
-    console.log(this.quantity);
-    this.quantity++;
-    this.cart.add(this.item, this.quantity);
+
+    this.group.amount++;
+    this.quantity = this.group.amount;
+    this.cart.add(this.item, this.group.amount);
   }
 
   /****
@@ -43,7 +44,8 @@ export default class CartButtonComponent extends Component {
   @action
   removeFromCart(e) {
     e.preventDefault();
-    this.quantity--;
-    this.cart.add(this.item, this.quantity);
+    this.group.amount--;
+    this.quantity = this.group.amount;
+    this.cart.add(this.item, this.group.amount);
   }
 }

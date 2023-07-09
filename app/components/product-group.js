@@ -18,5 +18,10 @@ export default class ProductGroupComponent extends Component {
           ((pro.price - pro.discount.amount) * pro.discount.min).toString()
       : pro.discount.name;
   }
+
+  get summ() {
+  return this.cart.recalculateItemGroupById(this.args.group.item.id).toFixed(2);
+  }
+
   //console.log();
 }
