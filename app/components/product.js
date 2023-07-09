@@ -29,9 +29,4 @@ export default class ProductComponent extends Component {
    * @type {*}
    */
   @tracked item = this.args.product;
-
-
-
-
-
 }

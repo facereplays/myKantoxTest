@@ -20,7 +20,9 @@ export default class ProductGroupComponent extends Component {
   }
 
   get summ() {
-  return this.cart.recalculateItemGroupById(this.args.group.item.id).toFixed(2);
+    return this.cart
+      .recalculateItemGroupById(this.args.group.item.id)
+      .toFixed(2);
   }
 
   //console.log();

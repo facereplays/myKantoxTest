@@ -1,12 +1,14 @@
-import Service, {service} from '@ember/service';
+import Service, { service } from '@ember/service';
 import { A } from '@ember/array';
-import {tracked} from '@glimmer/tracking';
+import { tracked } from '@glimmer/tracking';
 
 export default class CartService extends Service {
+  @tracked itemsGroups =
+    localStorage.getItem('cart').length > 1
+      ? JSON.parse(localStorage.getItem('cart'))
+      : A([]);
 
-  @tracked itemsGroups = localStorage.getItem('cart').length > 1 ? JSON.parse(localStorage.getItem('cart')) : A([]);
-
-  @tracked items = this.itemsGroups.filter(o => o.amount > 0).length;
+  @tracked items = this.itemsGroups.filter((o) => o.amount > 0).length;
   @tracked summ = 0;
   @tracked summTotal = 0;
   @service store;
@@ -16,19 +18,18 @@ export default class CartService extends Service {
   }
 
   getGroups() {
-
     return this.itemsGroups;
   }
 
   add(item, amount) {
-    let sTotal=0;
+    let sTotal = 0;
     const found = this.itemsGroups.find((s) => s.id == item.id);
     !found && amount > 0
-      ? this.itemsGroups.push({id: item.id, item: item, amount})
+      ? this.itemsGroups.push({ id: item.id, item: item, amount })
       : (found.amount = amount);
 
     this.summ = this.recalculate(this.itemsGroups);
-    this.itemsGroups.forEach(g=>sTotal+= g.item.price*g.amount)
+    this.itemsGroups.forEach((g) => (sTotal += g.item.price * g.amount));
     this.summTotal = sTotal;
     localStorage.setItem('cart', JSON.stringify(this.itemsGroups));
   }
@@ -41,8 +42,7 @@ export default class CartService extends Service {
    * @param itemsGroups
    * @returns {number}
    */
-  totalSumm(){
-
+  totalSumm() {
     return this.recalculate(this.itemsGroups);
   }
   recalculate(itemsGroups) {
@@ -55,22 +55,22 @@ export default class CartService extends Service {
 
     let ret = 0;
     itemsGroups.forEach((gr) => {
-
       ret += this.recalculateItemGroup(gr);
-
     });
-
 
     return ret;
   }
 
   recalculateItemGroupById(id) {
-    return this.recalculateItemGroup(this.itemsGroups.find(g => g.item.id == id));
+    return this.recalculateItemGroup(
+      this.itemsGroups.find((g) => g.item.id == id)
+    );
   }
 
   recalculateItemGroup(gr) {
     let ret = 0;
     if (gr.amount && gr.item) {
+      gr.subTotal = gr.item.price * gr.amount;
       if (gr.item.discount.amount && gr.amount >= gr.item.discount.min) {
         if (gr.item.discount.type === 'absolute') {
           ret += (gr.item.price - gr.item.discount.amount) * gr.amount;
@@ -107,5 +107,4 @@ export default class CartService extends Service {
      *
      */
   }
-
 }

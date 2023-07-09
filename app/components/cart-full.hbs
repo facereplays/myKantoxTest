@@ -1,4 +1,5 @@
-<div class="col"><div class="text-xl">Shopping Cart</div>
+<div class="col">
+  <div class="text-xl">Shopping Cart</div>
 You have {{this.total}} items in your cart.
 </div>
 
@@ -13,12 +14,30 @@ You have {{this.total}} items in your cart.
 <div class="col-span-4 ml-6 rounded-md overflow-hidden shadow-sm border border-gray-100 flex flex-col">
   <div class="bg-gray-100 font-bold px-8 py-4 text-xl">Summary</div>
   <div class=" px-8 py-4 flex flex-col">
-    <div class="flex justify-between py-2"> Subtotal <span class="font-bold">{{this.currency.symbol}}{{this.subTotal}}</span></div>
+    <div class="flex justify-between py-2">
+      <div {{ on "click" this.toggleOpen}}>
+      <svg  style="transform:rotate(45deg)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.5 8.25L12 15.75L4.5 8.25" stroke="#1F2937" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
 
+
+    <span class="flex-grow">Subtotal</span>   <span class="font-bold">{{this.currency.symbol}}{{this.subTotal}}</span></div>
+<div id="rr">
+  {{#each this.groups as |productGroup|}}
+    <div class="flex justify-between py-2">
+
+    <span>  {{productGroup.amount}} x {{productGroup.item.name}} </span><span class="font-bold">{{this.currency.symbol}}{{format-currency productGroup.subTotal}}</span>
+    </div>
+  {{/each}}
+
+</div>
     <div class="flex justify-between py-2"> Shipping cost <span class="font-bold">{{this.currency.symbol}}{{this.shipping}}</span></div>
     <div class="flex justify-between py-2">  Discount <span class="font-bold">{{this.currency.symbol}}{{this.discount}}</span></div>
 
   </div>
+
+  <div class="border border-x-0  border-t-1 border-gray-100 px-8 py-4 flex justify-between text-xl">Total payable<span class="font-bold">{{this.currency.symbol}}{{format-currency this.cart.summ}}</span></div>
 </div>
 
 
