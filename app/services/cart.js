@@ -3,10 +3,10 @@ import { A } from '@ember/array';
 import { tracked } from '@glimmer/tracking';
 
 export default class CartService extends Service {
-  @tracked itemsGroups =
+  @tracked itemsGroups =localStorage.getItem('cart')?
     localStorage.getItem('cart').length > 1
       ? JSON.parse(localStorage.getItem('cart'))
-      : A([]);
+      : A([]) : A([]) ;
 
   @tracked items = this.itemsGroups
     ? this.itemsGroups.filter((o) => o.amount > 0)
