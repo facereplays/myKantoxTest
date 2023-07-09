@@ -12,11 +12,11 @@ export default class CartFullComponent extends Component {
   @action
   toggleOpen(){
 if(!this.isOpen) {
-  document.getElementById('drop').className='drop open';
+  document.getElementById('drop').className='px-8 drop grid grid-cols-12 gap-4 drop open';
   document.getElementById('but').className='but open';
 }else{
   document.getElementById('but').className='but';
-  document.getElementById('drop').className='drop';
+  document.getElementById('drop').className='px-8 drop grid grid-cols-12 gap-4 drop ';
 }
 
     this.isOpen =  this.isOpen? false : true;

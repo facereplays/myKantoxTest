@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.nav-tabs {
+  border: none !important;
+}
+
+.nav-tabs .nav-link:not(.active) {
+
+  border: none !important;
+  color: #1F2937 !important;
+}
+
+.nav-tabs .nav-link.active {
+  border: none;
+  border-bottom: solid 1px #6D28D9 !important;
+  color: #6D28D9;
+  font-weight: 700;
+
+}
+
+.h152 {
+  height: 152px
+}
+
+.but.open svg {
+  animation: myAnimBut 100ms ease 0s 1 normal forwards;
+}
+
+.but:not(.open) svg {
+  transform: rotate(-90deg);
+}
+
+.drop {
+  height: 0px;
+  overflow: hidden
+}
+
+@keyframes myAnimBut {
+  0% {
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+
+.drop.open {
+  animation: myAnimD 300ms ease 0s 1 normal forwards;
+}
+
+
+@keyframes myAnimD {
+  0% {
+    height: 0px;
+  }
+
+  100% {
+    height: auto;
+  }
+}
