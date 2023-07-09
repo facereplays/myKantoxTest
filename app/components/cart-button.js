@@ -7,9 +7,7 @@ export default class CartButtonComponent extends Component {
   @service cart;
   @service currency;
   @tracked groups = this.cart.getGroups();
-  @tracked group = this.args.prodId
-    ? this.groups.filter((g) => g.item.id == this.args.prodId)[0]
-    : this.args.group;
+  @tracked group = this.args.group;
   @tracked quantity = this.group ? this.group.amount : 0;
   @tracked item = this.group.item;
   /***

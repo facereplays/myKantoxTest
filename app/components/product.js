@@ -4,7 +4,7 @@ import { service } from '@ember/service';
 
 export default class ProductComponent extends Component {
   @tracked quantity = 0;
-
+  @service cart;
   @service currency;
   /****
    *
@@ -29,4 +29,5 @@ export default class ProductComponent extends Component {
    * @type {*}
    */
   @tracked item = this.args.product;
+  @tracked group = { item: this.args.product, amount: this.cart.getGroupAmount(this.item.id) }
 }

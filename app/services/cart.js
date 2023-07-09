@@ -1,12 +1,12 @@
-import Service, { service } from '@ember/service';
-import { A } from '@ember/array';
-import { tracked } from '@glimmer/tracking';
+import Service, {service} from '@ember/service';
+import {A} from '@ember/array';
+import {tracked} from '@glimmer/tracking';
 
 export default class CartService extends Service {
-  @tracked itemsGroups =localStorage.getItem('cart')?
+  @tracked itemsGroups = localStorage.getItem('cart') ?
     localStorage.getItem('cart').length > 1
       ? JSON.parse(localStorage.getItem('cart'))
-      : A([]) : A([]) ;
+      : A([]) : A([]);
 
   @tracked items = this.itemsGroups
     ? this.itemsGroups.filter((o) => o.amount > 0)
@@ -25,12 +25,18 @@ export default class CartService extends Service {
     return this.itemsGroups;
   }
 
+  getGroupAmount(itemId) {
+    const gr = this.itemsGroups.find((o) => o.item.id == itemId);
+    return gr ? gr.amount : 0;
+
+  }
+
   add(item, amount) {
     let sTotal = 0;
     let n = 0;
     const found = this.itemsGroups.find((s) => s.id == item.id);
     !found && amount > 0
-      ? this.itemsGroups.push({ id: item.id, item: item, amount })
+      ? this.itemsGroups.push({id: item.id, item: item, amount})
       : (found.amount = amount);
 
     this.summ = this.recalculate(this.itemsGroups);
