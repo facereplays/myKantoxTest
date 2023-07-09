@@ -8,8 +8,11 @@ export default class CartService extends Service {
       ? JSON.parse(localStorage.getItem('cart'))
       : A([]);
 
-
-  @tracked items =this.itemsGroups ?  this.itemsGroups.filter((o) => o.amount > 0).length : 0;
+  @tracked items = this.itemsGroups
+    ? this.itemsGroups.filter((o) => o.amount > 0)
+      ? this.itemsGroups.filter((o) => o.amount > 0).length
+      : 0
+    : 0;
   @tracked summ = this.recalculate(this.itemsGroups);
   @tracked summTotal = 0;
   @service store;
@@ -24,20 +27,19 @@ export default class CartService extends Service {
 
   add(item, amount) {
     let sTotal = 0;
-    let n=0;
+    let n = 0;
     const found = this.itemsGroups.find((s) => s.id == item.id);
     !found && amount > 0
       ? this.itemsGroups.push({ id: item.id, item: item, amount })
       : (found.amount = amount);
 
     this.summ = this.recalculate(this.itemsGroups);
-    this.itemsGroups.forEach((g) =>{
+    this.itemsGroups.forEach((g) => {
       sTotal += g.item.price * g.amount;
-      n+=g.amount;
-
-    } );
+      n += g.amount;
+    });
     this.summTotal = sTotal;
-    this.items =n;
+    this.items = n;
     localStorage.setItem('cart', JSON.stringify(this.itemsGroups));
   }
 
@@ -52,6 +54,7 @@ export default class CartService extends Service {
   totalSumm() {
     return this.recalculate(this.itemsGroups);
   }
+
   recalculate(itemsGroups) {
     /****
      *

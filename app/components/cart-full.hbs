@@ -26,7 +26,7 @@
 <div class="col-span-4 ml-6 rounded-md overflow-hidden shadow-sm border border-gray-100 flex flex-col">
   <div class="bg-gray-100 font-bold px-8 py-4 text-xl">Summary</div>
 
-  <!--start-->
+  {{!--start--}}
   <div class=" px-8 py-4 grid grid-cols-12 gap-4">
 
 
@@ -52,19 +52,19 @@
   <div></div>
 </div>
 
-   <!---->
+   {{!----}}
     <div class="px-8 flex justify-between py-2"> Shipping cost <span class="font-bold">{{this.currency.symbol}}{{this.shipping}}</span></div>
     <div class="px-8 flex justify-between py-2 pb">  Discount <span class="font-bold">{{this.currency.symbol}}{{this.discount}}</span></div>
 
 
-  <!--end-->
+  {{!--end--}}
   <div class="border border-x-0  border-t-1 border-gray-100 px-8 py-4 flex justify-between text-xl">
     Total payable<span class="font-bold">{{this.currency.symbol}}{{format-currency this.cart.summ}}</span>
   </div>
 
 
   <div class="px-8 py-4 flex justify-end ">
-  <button class="font-bold px-3 py-2 text-white bg-violet-800 rounded-md">Go to checkout</button>
+  <button class="font-bold px-3 py-2 text-white bg-violet-800 rounded-md" type="button">Go to checkout</button>
   </div>
 </div>
 

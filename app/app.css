@@ -1,26 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .nav-tabs {
   border: none !important;
 }
 
 .nav-tabs .nav-link:not(.active) {
-
   border: none !important;
-  color: #1F2937 !important;
+  color: #1f2937 !important;
 }
 
 .nav-tabs .nav-link.active {
   border: none;
-  border-bottom: solid 1px #6D28D9 !important;
-  color: #6D28D9;
+  border-bottom: solid 1px #6d28d9 !important;
+  color: #6d28d9;
   font-weight: 700;
-
 }
 
 .h152 {
-  height: 152px
+  height: 152px;
 }
 
 .but.open svg {
@@ -32,8 +31,8 @@
 }
 
 .drop {
-  height: 0px;
-  overflow: hidden
+  height: 0;
+  overflow: hidden;
 }
 
 @keyframes myAnimBut {
@@ -46,15 +45,13 @@
   }
 }
 
-
 .drop.open {
   animation: myAnimD 300ms ease 0s 1 normal forwards;
 }
 
-
 @keyframes myAnimD {
   0% {
-    height: 0px;
+    height: 0;
   }
 
   100% {
