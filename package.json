@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.5",
-    "@babel/plugin-proposal-decorators": "^7.22.5",
+    "@babel/plugin-proposal-decorators": "^7.22.5",  "ember-cli-babel": "^7.26.11",
     "@ember/optional-features": "^2.0.0",
     "@ember/string": "^3.1.1",
     "@ember/test-helpers": "^3.0.3",
@@ -40,7 +40,7 @@
     "ember-bootstrap": "^5.1.1",
     "ember-cli": "~5.0.0",
     "ember-cli-app-version": "^6.0.0",
-    "ember-cli-babel": "^7.26.11",
+
     "ember-cli-clean-css": "^2.0.0",
     "ember-cli-dependency-checker": "^3.3.1",
     "ember-cli-htmlbars": "^6.2.0",
@@ -89,7 +89,6 @@
     "@embroider/core": "^3.1.2",
     "@embroider/webpack": "^3.1.2",
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/typography": "^0.5.9",
-    "miragejs": "^0.1.47"
+    "@tailwindcss/typography": "^0.5.9"
   }
 }

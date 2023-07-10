@@ -10,7 +10,7 @@ export default class CartService extends Service {
 
   @tracked items = this.itemsGroups
     ? this.itemsGroups.filter((o) => o.amount > 0)
-      ? this.itemsGroups.filter((o) => o.amount > 0).length
+      ? this.itemsGroups.map((o) => o.amount).reduce((partialSum, a) => partialSum + a, 0)
       : 0
     : 0;
   @tracked summ = this.recalculate(this.itemsGroups);
@@ -33,7 +33,7 @@ export default class CartService extends Service {
 
   add(item, amount) {
     let sTotal = 0;
-    let n = 0;
+
     const found = this.itemsGroups.find((s) => s.id == item.id);
     !found && amount > 0
       ? this.itemsGroups.push({id: item.id, item: item, amount})
@@ -42,10 +42,12 @@ export default class CartService extends Service {
     this.summ = this.recalculate(this.itemsGroups);
     this.itemsGroups.forEach((g) => {
       sTotal += g.item.price * g.amount;
-      n += g.amount;
+
     });
     this.summTotal = sTotal;
-    this.items = n;
+    this.items = this.itemsGroups
+      .map((o) => o.amount)
+      .reduce((partialSum, a) => partialSum + a, 0);
     localStorage.setItem('cart', JSON.stringify(this.itemsGroups));
   }
 

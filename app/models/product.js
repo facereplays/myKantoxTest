@@ -5,5 +5,5 @@ export default class ProductModel extends Model {
   @attr('number') price;
   @attr('number') id;
   @attr('string') UID;
-  @hasMany('discount') discount;
+  @hasMany('discount',{async:false}) discount;
 }

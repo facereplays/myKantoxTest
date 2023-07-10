@@ -32,7 +32,7 @@ module.exports = function (defaults) {
 
     'ember-bootstrap': {
       bootstrapVersion: 5,
-      importBootstrapCSS: true,
+      importBootstrapCSS: false,
     },
   });
 
