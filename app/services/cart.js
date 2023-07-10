@@ -1,16 +1,19 @@
-import Service, {service} from '@ember/service';
-import {A} from '@ember/array';
-import {tracked} from '@glimmer/tracking';
+import Service, { service } from '@ember/service';
+import { A } from '@ember/array';
+import { tracked } from '@glimmer/tracking';
 
 export default class CartService extends Service {
-  @tracked itemsGroups = localStorage.getItem('cart') ?
-    localStorage.getItem('cart').length > 1
+  @tracked itemsGroups = localStorage.getItem('cart')
+    ? localStorage.getItem('cart').length > 1
       ? JSON.parse(localStorage.getItem('cart'))
-      : A([]) : A([]);
+      : A([])
+    : A([]);
 
   @tracked items = this.itemsGroups
     ? this.itemsGroups.filter((o) => o.amount > 0)
-      ? this.itemsGroups.map((o) => o.amount).reduce((partialSum, a) => partialSum + a, 0)
+      ? this.itemsGroups
+          .map((o) => o.amount)
+          .reduce((partialSum, a) => partialSum + a, 0)
       : 0
     : 0;
   @tracked summ = this.recalculate(this.itemsGroups);
@@ -26,23 +29,21 @@ export default class CartService extends Service {
   }
 
   getGroupAmount(itemId) {
-    const gr = this.itemsGroups.find((o) => o.item.id == itemId);
+    const gr = this.itemsGroups.find((o) => o.item.UID == itemId);
     return gr ? gr.amount : 0;
-
   }
 
   add(item, amount) {
     let sTotal = 0;
 
-    const found = this.itemsGroups.find((s) => s.id == item.id);
+    const found = this.itemsGroups.find((s) => s.item.UID == item.UID);
     !found && amount > 0
-      ? this.itemsGroups.push({id: item.id, item: item, amount})
+      ? this.itemsGroups.push({ item: item, amount })
       : (found.amount = amount);
 
     this.summ = this.recalculate(this.itemsGroups);
     this.itemsGroups.forEach((g) => {
       sTotal += g.item.price * g.amount;
-
     });
     this.summTotal = sTotal;
     this.items = this.itemsGroups
@@ -81,7 +82,7 @@ export default class CartService extends Service {
 
   recalculateItemGroupById(id) {
     return this.recalculateItemGroup(
-      this.itemsGroups.find((g) => g.item.id == id)
+      this.itemsGroups.find((g) => g.item.UID == id)
     );
   }
 

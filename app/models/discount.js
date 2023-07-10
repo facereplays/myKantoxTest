@@ -5,7 +5,6 @@ export default class DiscountModel extends Model {
   @attr('string') type;
   @attr('number') min;
   @attr('number') amount;
-  @attr('number') id;
   @attr('string') description;
-  @hasMany('product') product;
+  @hasMany('product', { async: false }) product;
 }

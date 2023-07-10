@@ -6,7 +6,7 @@
       <path d="M19.5 8.25L12 15.75L4.5 8.25" stroke="#1F2937" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 
-    Continue shopping</div>
+   <span class="hover:-ml-0.5">Continue shopping</span> </div>
     </LinkTo>
   </div>
 
@@ -14,7 +14,7 @@
   <div  class="text-xl py-2">You have {{this.total}} items in your cart.</div>
 </div>
 
-<div class="grid grid-cols-10 gap-x-6 pt-4">
+<div class="grid lg:grid-cols-10 md:grid-cols-1 gap-6 pt-4">
 <div class="col-span-6 ">
   <div class="grid  gap-y-6">
   {{#each this.groups as |productGroup|}}
@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<div class="col-span-4 ml-6 rounded-md overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+<div class="lg:col-span-4 md:col-span-6 sm:col-span-6 lg:ml-6 rounded-md overflow-hidden shadow-sm border border-gray-100 flex flex-col">
   <div class="bg-gray-100 font-bold px-8 py-4 text-xl">Summary</div>
 
   {{!--start--}}

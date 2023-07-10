@@ -10,19 +10,24 @@ export default class ProductGroupComponent extends Component {
   @tracked group = this.args.group;
 
   get discountText() {
-    const pro = this.args.group.item;
-    return pro.discount.type === 'absolute'
-      ? pro.discount.min.toString() +
+    return this.args.group && this.args.group.item
+      ? this.args.group.item.discount.type === 'absolute'
+        ? this.args.group.item.discount.min.toString() +
           '  for ' +
           this.currency.symbol +
-          ((pro.price - pro.discount.amount) * pro.discount.min).toString()
-      : pro.discount.name;
+          (
+            (this.args.group.item.price -
+              this.args.group.item.discount.amount) *
+            this.args.group.item.discount.min
+          ).toString()
+        : this.args.group.item.discount.name
+      : '';
   }
 
   get summ() {
-    return this.cart
-      .recalculateItemGroupById(this.args.group.item.id)
-      .toFixed(2);
+    return this.args.group && this.args.group.item
+      ? this.cart.recalculateItemGroupById(this.args.group.item.UID).toFixed(2)
+      : '';
   }
 
   //console.log();

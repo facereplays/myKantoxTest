@@ -15,12 +15,14 @@ export default class ProductComponent extends Component {
    */
   get discountText() {
     const pro = this.args.product;
-    return this.args.product.discount.type === 'absolute'
-      ? pro.discount.min.toString() +
+    return pro
+      ? pro.discount.type === 'absolute'
+        ? pro.discount.min.toString() +
           '  for ' +
           this.currency.symbol +
           ((pro.price - pro.discount.amount) * pro.discount.min).toString()
-      : pro.discount.name;
+        : pro.discount.name
+      : '';
   }
   /***
    * particular product
@@ -29,5 +31,8 @@ export default class ProductComponent extends Component {
    * @type {*}
    */
   @tracked item = this.args.product;
-  @tracked group = { item: this.args.product, amount: this.cart.getGroupAmount(this.item.id) }
+  @tracked group = {
+    item: this.args.product,
+    amount: this.item ? this.cart.getGroupAmount(this.item.UID) : 0,
+  };
 }

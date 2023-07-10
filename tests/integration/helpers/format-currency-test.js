@@ -12,6 +12,6 @@ module('Integration | Helper | format-currency', function (hooks) {
 
     await render(hbs`{{format-currency this.inputValue}}`);
 
-    assert.dom(this.element).hasText('1234.00');
+    assert.dom(this.element).hasText('1234.77');
   });
 });

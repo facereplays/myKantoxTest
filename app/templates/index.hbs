@@ -1,0 +1,86 @@
+<div class="mx-auto max-w-2xl px-4  sm:px-6 sm:pb-24 lg:max-w-7xl lg:px-8">
+  <div class="md:container md:mx-auto mt-8 pt-2">
+    <b>Test for Kantox</b>, opened (
+    Fri, 7 Jul, 09:08)
+     <br>
+    view it on
+   <span class="font-medium  underline text-violet-700"> <LinkTo @route="products" >products</LinkTo></span>
+<br>
+    GIT : <a class="font-medium  underline text-violet-700" href="https://github.com/facereplays/myKantoxTest" target="_blank" >https://github.com/facereplays/myKantoxTest</a>
+<br>
+    <div class="font-medium  text-xl pt-8"> Comments</div>
+    <div class="pt-6">
+    REST API TreeQL request is used instead of mirage:
+
+      <a class="font-medium  underline text-violet-700" href="https://buben-sha.herokuapp.com/api/records/product?join=discount" target="_blank" >https://buben-sha.herokuapp.com/api/records/product?join=discount</a>
+
+<div>
+
+
+  <pre>
+
+{
+    "records":[
+{
+"id":4,
+"price":"3.11",
+"name":"Green Tea",
+"pic":"https:\/\/vids.facereplays.com\/ProductTea.png",
+"UID":"GR1",
+"discount":{
+    "id":3,
+    "type":"payHalfForPair",
+    "amount":0.5,
+    "name":"2 for 1",
+    "description":"CEO idea",
+    "min":2
+}
+},
+{
+"id":5,
+"price":"5.0",
+"name":"Strawberries ",
+"pic":"https:\/\/vids.facereplays.com\/ProductStraw.png",
+"UID":"SR1",
+"discount":{
+    "id":1,
+    "type":"absolute",
+    "amount":0.5,
+    "name":"abs for strawberies",
+    "description":"given by COO",
+    "min":3
+}
+},
+{
+"id":6,
+"price":"11.23",
+"name":"Coffee",
+"pic":"https:\/\/vids.facereplays.com\/ProductCofee.png",
+"UID":"CF1",
+"discount":{
+    "id":2,
+    "type":"rel",
+    "amount":0.333,
+    "name":"Multi-buy Discount",
+    "description":"CTO idea ",
+    "min":3
+}
+}
+]
+}
+
+
+
+  </pre>
+
+
+</div>
+
+
+    </div>
+
+
+  </div>
+
+
+</div>
