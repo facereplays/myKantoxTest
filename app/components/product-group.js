@@ -16,6 +16,12 @@ export default class ProductGroupComponent extends Component {
           .amount
       : 0;
 
+  /***
+   * getting updated subtoatl for particular item
+   *
+   *
+   * @returns {*}
+   */
   get getGroupAmount() {
     const ht = this.cart.itemsGroups.find(
       (g) => g.item.UID === this.args.group.item.UID
