@@ -5,12 +5,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;900&display=swap");
 
 body {
-  font-family: Inter, sans-serif;
+  font-family: Inter, sans-serif!important;
 }
 
 .nav-tabs {
   border: none !important;
   display: flex;
+  margin-bottom: 64px;
 }
 
 .tab-pane:not(.show) {
