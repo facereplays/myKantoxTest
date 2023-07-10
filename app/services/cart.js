@@ -8,7 +8,6 @@ import { tracked } from '@glimmer/tracking';
  *
  */
 export default class CartService extends Service {
-
   /***
    * retreving basket items from localstorage if exists
    *
@@ -68,7 +67,7 @@ export default class CartService extends Service {
    * @returns {[*]}
    */
   getGroupAmount(itemId) {
-    const gr = this.itemsGroups.find((o) => o.item.UID == itemId);
+    const gr = this.itemsGroups.find((o) => o.item.UID === itemId);
     return gr ? gr.amount : 0;
   }
 
@@ -81,7 +80,7 @@ export default class CartService extends Service {
   add(item, amount) {
     let sTotal = 0;
 
-    const found = this.itemsGroups.find((s) => s.item.UID == item.UID);
+    const found = this.itemsGroups.find((s) => s.item.UID === item.UID);
     !found && amount > 0
       ? this.itemsGroups.push({ item: item, amount })
       : (found.amount = amount);
@@ -127,7 +126,7 @@ export default class CartService extends Service {
 
   recalculateItemGroupById(id) {
     return this.recalculateItemGroup(
-      this.itemsGroups.find((g) => g.item.UID == id)
+      this.itemsGroups.find((g) => g.item.UID === id)
     );
   }
 
@@ -160,22 +159,5 @@ export default class CartService extends Service {
       }
     }
     return ret;
-  }
-
-  addBatch(items) {
-    /***
-     * TODO
-     *  this.items.pushObjects(items);
-     *
-     *
-     */
-  }
-
-  remove(item) {
-    /***
-     *
-     * TODO
-     *
-     */
   }
 }
