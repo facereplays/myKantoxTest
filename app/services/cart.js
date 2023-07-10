@@ -2,13 +2,32 @@ import Service, { service } from '@ember/service';
 import { A } from '@ember/array';
 import { tracked } from '@glimmer/tracking';
 
+/***
+ *
+ * main sevice for calculating basket total summ
+ *
+ */
 export default class CartService extends Service {
+
+  /***
+   * retreving basket items from localstorage if exists
+   *
+   *
+   * @type {any}
+   */
   @tracked itemsGroups = localStorage.getItem('cart')
     ? localStorage.getItem('cart').length > 1
       ? JSON.parse(localStorage.getItem('cart'))
       : A([])
     : A([]);
-
+  /****
+   *
+   * retriving total number of items
+   *
+   *
+   *
+   * @type {*|number}
+   */
   @tracked items = this.itemsGroups
     ? this.itemsGroups.filter((o) => o.amount > 0)
       ? this.itemsGroups
@@ -16,23 +35,49 @@ export default class CartService extends Service {
           .reduce((partialSum, a) => partialSum + a, 0)
       : 0
     : 0;
+  /***
+   *
+   * calculating initial basket summ
+   *
+   * @type {*| number}
+   */
   @tracked summ = this.recalculate(this.itemsGroups);
   @tracked summTotal = 0;
   @service store;
 
+  /***
+   * number of items in basket
+   *
+   * @returns {*|number}
+   */
   getAmount() {
     return this.items;
   }
 
+  /***
+   *
+   * all basket groups
+   * @returns {[*]}
+   */
   getGroups() {
     return this.itemsGroups;
   }
-
+  /***
+   *
+   * amount for particular item
+   * @returns {[*]}
+   */
   getGroupAmount(itemId) {
     const gr = this.itemsGroups.find((o) => o.item.UID == itemId);
     return gr ? gr.amount : 0;
   }
 
+  /***
+   * updating amount of items in basket
+   *
+   * @param item
+   * @param amount
+   */
   add(item, amount) {
     let sTotal = 0;
 
@@ -86,6 +131,13 @@ export default class CartService extends Service {
     );
   }
 
+  /***
+   * recalculating summ in accordance with discount's algorythms
+   * or returning plain multiplication if discount does not exist or not valid to amount
+   *
+   * @param gr
+   * @returns {number}
+   */
   recalculateItemGroup(gr) {
     let ret = 0;
     if (gr.amount && gr.item) {

@@ -7,9 +7,7 @@ export default class ProductsService extends Service {
   add(item) {
     this.products.pushObject(item);
   }
-  addBatch(items) {
-    this.products.pushObjects(items);
-  }
+
   remove(item) {
     this.products.removeObject(item);
   }
