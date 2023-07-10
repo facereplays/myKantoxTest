@@ -2,18 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: Inter !important;
+}
+
 .nav-tabs {
-  border: none !important; display:flex;
+  border: none !important;
+  display: flex;
 }
-.tab-pane:not(.show){
 
-  display:none;
+.tab-pane:not(.show) {
+  display: none;
 }
-.nav-tabs .nav-link{
 
-  padding:8px;
-  margin-right:16px;
+.nav-tabs .nav-link {
+  padding: 8px;
+  margin-right: 16px;
 }
+
 .nav-tabs .nav-link:not(.active) {
   border: none !important;
   color: #1f2937 !important;

@@ -8,10 +8,10 @@ module('Integration | Helper | format-currency', function (hooks) {
 
   // TODO: Replace this with your real tests.
   test('it renders', async function (assert) {
-    this.set('inputValue', '1234');
+    this.set('inputValue', '1234.765765');
 
     await render(hbs`{{format-currency this.inputValue}}`);
 
-    assert.dom(this.element).hasText('1234');
+    assert.dom(this.element).hasText('1234.00');
   });
 });
