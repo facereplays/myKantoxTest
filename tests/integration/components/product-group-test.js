@@ -12,15 +12,13 @@ module('Integration | Component | product-group', function (hooks) {
 
     await render(hbs`<ProductGroup />`);
 
-    assert.dom(this.element).hasText('');
+    assert.dom(this.element).hasText('Add to Cart');
 
     // Template block usage:
     await render(hbs`
-      <ProductGroup>
-        template block text
-      </ProductGroup>
+      <ProductGroup> </ProductGroup>
     `);
 
-    assert.dom(this.element).hasText('template block text');
+    assert.dom(this.element).hasText('Add to Cart');
   });
 });

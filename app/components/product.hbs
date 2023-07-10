@@ -1,4 +1,4 @@
-
+{{# if @product}}
 
 <a href="#" class="group rounded-lg border border-gray-100 shadow-sm overflow-hidden">
   <div class="relative">
@@ -10,7 +10,9 @@
     <div>
   <h3 class="mt-4 text-xl font-bold text-gray-700">{{@product.name}}</h3>
 
-  <p class="mt-1 text-lg font-medium text-gray-900">{{this.currency.symbol}}{{@product.price}}</p></div>
+  <p class="mt-1 text-lg font-medium text-gray-900">{{this.currency.symbol}}{{@product.price}}</p>
+
+    </div>
   <div class="sm:ml-3 grid content-end">
 
 
@@ -19,3 +21,4 @@
 
     </div></div>
 </a>
+{{/if}}

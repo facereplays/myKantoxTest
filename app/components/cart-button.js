@@ -8,7 +8,11 @@ export default class CartButtonComponent extends Component {
   @service currency;
   @tracked groups = this.cart.getGroups();
   @tracked group = this.args.group;
-  @tracked quantity = this.group ? this.group.amount : 0;
+  @tracked quantity = this.group
+    ? this.group.amount > 0
+      ? this.group.amount
+      : false
+    : false;
   @tracked item = this.group.item;
   /***
    *
@@ -45,7 +49,7 @@ export default class CartButtonComponent extends Component {
   removeFromCart(e) {
     e.preventDefault();
     this.group.amount--;
-    this.quantity = this.group.amount;
+    this.quantity = this.group.amount > 0 ? this.group.amount : false;
     this.cart.add(this.item, this.group.amount);
   }
 }

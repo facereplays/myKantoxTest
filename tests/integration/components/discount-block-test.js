@@ -16,11 +16,10 @@ module('Integration | Component | discount-block', function (hooks) {
 
     // Template block usage:
     await render(hbs`
-      <DiscountBlock>
-        template block text
-      </DiscountBlock>
+      <DiscountBlock/>
+
     `);
 
-    assert.dom(this.element).hasText('template block text');
+    assert.dom(this.element).hasText('');
   });
 });

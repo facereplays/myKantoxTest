@@ -12,15 +12,12 @@ module('Integration | Component | cart-button', function (hooks) {
 
     await render(hbs`<CartButton />`);
 
-    assert.dom(this.element).hasText('');
+    assert.dom(this.element).hasText('Add to Cart');
 
     // Template block usage:
     await render(hbs`
-      <CartButton>
-        template block text
-      </CartButton>
-    `);
+      <CartButton/> `);
 
-    assert.dom(this.element).hasText('template block text');
+    assert.dom(this.element).hasText('Add to Cart');
   });
 });

@@ -17,10 +17,9 @@ module('Integration | Component | cart', function (hooks) {
     // Template block usage:
     await render(hbs`
       <Cart>
-        template block text
       </Cart>
     `);
 
-    assert.dom(this.element).hasText('template block text');
+    assert.dom(this.element).hasText('');
   });
 });
