@@ -32,7 +32,9 @@
   </div>
 </div>
 
-<div class="lg:col-span-4 md:col-span-6 sm:col-span-6 lg:ml-6 rounded-md overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+<div class="lg:col-span-4 md:col-span-6 sm:col-span-6 lg:ml-6"><div class="rounded-md overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+
+
   <div class="bg-gray-100 font-bold px-8 py-4 text-xl">Summary</div>
 
   {{!--start--}}
@@ -75,7 +77,7 @@
 
 
   {{!--end--}}
-  <div class="border border-x-0  border-t-1 border-gray-100 px-8 py-4 flex justify-between text-xl">
+  <div class="border border-0  border-t border-gray-100 px-8 py-4 flex justify-between text-xl">
     Total payable<span class="font-bold">{{this.currency.symbol}}{{format-currency this.cart.summ}}</span>
   </div>
 
@@ -85,6 +87,6 @@
   </div>
 </div>
 
-
+</div>
 </div>
 {{/if}}
