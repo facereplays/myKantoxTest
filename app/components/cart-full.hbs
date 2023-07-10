@@ -65,7 +65,7 @@
 
    {{!----}}
     <div class="px-8 flex justify-between py-2"> Shipping cost <span class="font-bold">{{this.currency.symbol}}{{this.shipping}}</span></div>
-    <div class="px-8 flex justify-between py-2 pb">  Discount
+    <div class="px-8 flex justify-between py-2 pb-8">  Discount
 
 
       <span class="font-bold">
@@ -77,7 +77,7 @@
 
 
   {{!--end--}}
-  <div class="border border-0  border-t border-gray-100 px-8 py-4 flex justify-between text-xl">
+  <div class="border border-0  border-t border-gray-100 px-8 py-4 pt-8 flex justify-between text-xl">
     Total payable<span class="font-bold">{{this.currency.symbol}}{{format-currency this.cart.summ}}</span>
   </div>
 
