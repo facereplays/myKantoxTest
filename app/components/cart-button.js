@@ -17,7 +17,7 @@ export default class CartButtonComponent extends Component {
    * @returns {boolean}
    */
   get one() {
-    return this.group.amount == 1 ? true : false;
+    return this.group.amount === 1;
   }
 
   /***
