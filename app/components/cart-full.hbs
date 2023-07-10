@@ -54,7 +54,16 @@
 
    {{!----}}
     <div class="px-8 flex justify-between py-2"> Shipping cost <span class="font-bold">{{this.currency.symbol}}{{this.shipping}}</span></div>
-    <div class="px-8 flex justify-between py-2 pb">  Discount <span class="font-bold">{{this.currency.symbol}}{{this.discount}}</span></div>
+    <div class="px-8 flex justify-between py-2 pb">  Discount
+
+
+      <span class="font-bold">
+        {{#if this.discount}} - {{/if}}
+        {{this.currency.symbol}}
+
+        {{this.discount}}</span>
+
+    </div>
 
 
   {{!--end--}}
