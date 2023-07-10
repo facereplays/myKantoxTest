@@ -87,7 +87,7 @@ export default class CartService extends Service {
 
     return its
       ? its.find((o) => o.item.UID === itemId)
-        ? its.find((o) => o.item.UID === itemId).amount.toFixed(2)
+        ? its.find((o) => o.item.UID === itemId).amount
         : '0'
       : '0';
   }

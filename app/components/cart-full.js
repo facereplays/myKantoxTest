@@ -28,7 +28,9 @@ export default class CartFullComponent extends Component {
     return this.cart.getGroups().filter((g) => g.amount > 0);
   }
   get discount() {
-    return (this.cart.summTotal - this.cart.summ).toFixed(2);
+    return this.cart.summTotal - this.cart.summ > 0
+      ? (this.cart.summTotal - this.cart.summ).toFixed(2)
+      : 0;
   }
   get shipping() {
     /***

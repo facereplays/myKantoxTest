@@ -1,4 +1,4 @@
-{{#if this.total}}
+
 
 <div class="col py-2">
   <div class="pt-12 pb-16">
@@ -13,9 +13,16 @@
   </div>
 
   <div class="text-4xl font-medium">Shopping Cart</div>
-  <div  class="text-xl py-2">You have {{this.total}} items in your cart.</div>
-</div>
+  <div  class="text-xl py-2">{{#if this.total}}
+  You have {{this.total}} items in your cart.
 
+{{else}}
+    The cart is empty.<br>
+    <LinkTo @route="products">Back to Products</LinkTo>
+  {{/if}}
+  </div>
+</div>
+{{#if this.total}}
 <div class="grid lg:grid-cols-10 md:grid-cols-1 gap-6 pt-4">
 <div class="col-span-6 ">
   <div class="grid  gap-y-6">
@@ -61,9 +68,8 @@
 
       <span class="font-bold">
         {{#if this.discount}} - {{/if}}
-        {{this.currency.symbol}}
-
-        {{this.discount}}</span>
+        {{this.currency.symbol}}{{this.discount}}
+      </span>
 
     </div>
 
