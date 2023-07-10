@@ -5,8 +5,10 @@
 <div class="flex-grow h152 grid grid-cols-1 content-between pl-6">
 <div>
 <div class="flex justify-between"><div class="text-xl font-bold">  {{this.item.name}}</div>
-
-<div class="text-xl">{{this.currency.symbol}}{{this.summ}}</div>
+{{# if this.cart.itemsGroups}}
+  <div class="hidden">{{this.getGroupAmount}}</div>
+<div class="text-xl">{{this.currency.symbol}}{{this.trr}}</div>
+  {{/if}}
 </div>
   <div class="flex justify-start mt-4">
   <div class="text-xs min-w-min p-2 font-medium rounded-md bg-teal-100">

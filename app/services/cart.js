@@ -1,6 +1,7 @@
 import Service, { service } from '@ember/service';
 import { A } from '@ember/array';
 import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
 /***
  *
@@ -34,6 +35,12 @@ export default class CartService extends Service {
           .reduce((partialSum, a) => partialSum + a, 0)
       : 0
     : 0;
+
+  @tracked itemsAms = this.itemsGroups
+    ? this.itemsGroups.filter((o) => o.amount > 0)
+      ? this.itemsGroups.map((o) => [o.item.UID, o.amount])
+      : []
+    : [];
   /***
    *
    * calculating initial basket summ
@@ -41,6 +48,7 @@ export default class CartService extends Service {
    * @type {*| number}
    */
   @tracked summ = this.recalculate(this.itemsGroups);
+
   @tracked summTotal = 0;
   @service store;
 
@@ -61,14 +69,27 @@ export default class CartService extends Service {
   getGroups() {
     return this.itemsGroups;
   }
+
   /***
    *
    * amount for particular item
    * @returns {[*]}
    */
   getGroupAmount(itemId) {
-    const gr = this.itemsGroups.find((o) => o.item.UID === itemId);
-    return gr ? gr.amount : 0;
+    const its =
+      this && this.itemsGroups
+        ? this.itemsGroups
+        : localStorage.getItem('cart')
+        ? localStorage.getItem('cart').length > 1
+          ? JSON.parse(localStorage.getItem('cart'))
+          : A([])
+        : A([]);
+
+    return its
+      ? its.find((o) => o.item.UID === itemId)
+        ? its.find((o) => o.item.UID === itemId).amount.toFixed(2)
+        : '0'
+      : '0';
   }
 
   /***
@@ -150,7 +171,7 @@ export default class CartService extends Service {
           ret += pr * gr.amount;
         } else if (gr.item.discount.type === 'payHalfForPair') {
           ret += gr.item.price * Math.floor(gr.amount / 2);
-          ret += (gr.item.price * gr.amount) % 2;
+          ret += gr.item.price * (gr.amount % 2);
         } else {
           ret += gr.item.price * gr.amount;
         }

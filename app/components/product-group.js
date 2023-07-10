@@ -4,10 +4,26 @@ import { service } from '@ember/service';
 
 export default class ProductGroupComponent extends Component {
   @tracked stat;
+  @tracked trr;
   @service currency;
   @service cart;
   @tracked item = this.args.group ? this.args.group.item : null;
   @tracked group = this.args.group;
+  @tracked allItems = this.cart.itemsGroups;
+  @tracked amount =
+    this.args.group && this.args.group.item
+      ? this.allItems.find((g) => g.item.UID === this.args.group.item.UID)
+          .amount
+      : 0;
+
+  get getGroupAmount() {
+    const ht = this.cart.itemsGroups.find(
+      (g) => g.item.UID === this.args.group.item.UID
+    ).amount;
+
+    this.trr = (ht * this.args.group.item.price).toFixed(2);
+    return this.cart.items;
+  }
 
   get discountText() {
     return this.args.group && this.args.group.item
@@ -26,7 +42,11 @@ export default class ProductGroupComponent extends Component {
 
   get summ() {
     return this.args.group && this.args.group.item
-      ? this.cart.recalculateItemGroupById(this.args.group.item.UID).toFixed(2)
+      ? (
+          this.cart.itemsGroups.find(
+            (g) => g.item.UID === this.args.group.item.UID
+          ).amount * this.args.group.item.price
+        ).toFixed(2)
       : '';
   }
 
