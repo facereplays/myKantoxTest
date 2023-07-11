@@ -115,6 +115,16 @@ export default class CartService extends Service {
       .map((o) => o.amount)
       .reduce((partialSum, a) => partialSum + a, 0);
     localStorage.setItem('cart', JSON.stringify(this.itemsGroups));
+    if(document.getElementById('cartIndex'))
+    {
+      document.getElementById('cartIndex').className =
+        'ripple rounded-md';
+      setTimeout(() => {
+        document.getElementById('cartIndex').className =
+          'rounded-md';
+      }, 1000);
+    }
+
   }
 
   /****

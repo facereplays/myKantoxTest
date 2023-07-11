@@ -9,6 +9,13 @@ export default class CartFullComponent extends Component {
   get total() {
     return this.cart.getAmount();
   }
+
+  /****
+   * for animating dropdown
+   *
+   *
+   *
+   */
   @action
   toggleOpen() {
     if (!this.isOpen) {
