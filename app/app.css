@@ -8,6 +8,10 @@ body {
   font-family: Inter, sans-serif !important;
 }
 
+svg {
+  cursor: pointer;
+}
+
 .da:hover svg {
   stroke: #fff;
 }
@@ -81,11 +85,11 @@ body {
 }
 
 #cartIndex.ripple {
-  animation: myshadow 0.5s ;
+  animation: myshadow 0.5s;
 }
 
 @keyframes myshadow {
   50% {
-    box-shadow: 0px 0px 10px #6D28D9;
+    box-shadow: 0 0 10px #6d28d9;
   }
 }
