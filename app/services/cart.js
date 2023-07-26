@@ -184,6 +184,6 @@ export default class CartService extends Service {
         ret += gr.item.price * gr.amount;
       }
     }
-    return ret;
+    return Number(ret.toFixed(2));
   }
 }
